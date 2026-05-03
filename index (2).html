@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TANixity — AI Command Interface</title>
+
+  <!-- Google Fonts: Orbitron (display) + Share Tech Mono (body) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ── Stylesheet ── -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       HUD CORNER DECORATIONS (purely decorative frame)
+  ═══════════════════════════════════════════════════════ -->
+  <div class="corner-dec tl"></div>
+  <div class="corner-dec tr"></div>
+  <div class="corner-dec bl"></div>
+  <div class="corner-dec br"></div>
+
+  <!-- ══════════════════════════════════════════════════════
+       APP ROOT
+  ═══════════════════════════════════════════════════════ -->
+  <div id="app">
+
+    <!-- ── HEADER ── -->
+    <header>
+      <div class="logo">
+        <!-- Robot icon -->
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.5" color="#00ffe7" aria-hidden="true">
+            <rect x="5" y="8" width="14" height="10" rx="2"/>
+            <circle cx="9"  cy="13" r="1.5" fill="#00ffe7" stroke="none"/>
+            <circle cx="15" cy="13" r="1.5" fill="#00ffe7" stroke="none"/>
+            <path d="M12 2v4M9 8V6M15 8V6" stroke-linecap="round"/>
+            <path d="M5 14H3M21 14h-2"      stroke-linecap="round"/>
+            <path d="M9 18v2M15 18v2"        stroke-linecap="round"/>
+          </svg>
+        </div>
+        <!-- Brand name -->
+        <div>
+          <span class="logo-text">TANixity</span>
+          <span class="logo-sub">AI COMMAND INTERFACE v2.0</span>
+        </div>
+      </div>
+
+      <!-- Live status indicator -->
+      <div class="status-bar">
+        <div class="status-dot"></div>
+        <span>SYSTEMS ONLINE</span>
+      </div>
+    </header>
+
+    <!-- ── API KEY WARNING BANNER ──
+         Shown automatically by app.js when the key is not set. -->
+    <div id="api-banner">
+      ⚠ &nbsp; GROQ API KEY NOT SET —
+      Open <code style="color:#ff9090">app.js</code> and replace
+      <code style="color:#ff9090">YOUR_GROQ_API_KEY_HERE</code> with your key.
+    </div>
+
+    <!-- ── CHAT WINDOW ── -->
+    <div id="chat-window" role="log" aria-live="polite" aria-label="Chat messages">
+
+      <!-- Welcome / splash screen (removed on first message) -->
+      <div id="welcome">
+        <div class="w-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none"
+               stroke="#00ffe7" stroke-width="1.2" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 8v4l3 3" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="1" fill="#00ffe7"/>
+          </svg>
+        </div>
+        <h2>INITIALIZING TANixity</h2>
+        <p>Groq-powered AI assistant online.<br/>Type a command to begin the session.</p>
+      </div>
+
+    </div><!-- /#chat-window -->
+
+    <!-- ── INPUT AREA ── -->
+    <div id="input-area">
+      <div class="input-wrapper">
+        <!-- Multi-line auto-grow textarea -->
+        <textarea
+          id="user-input"
+          rows="1"
+          placeholder="Enter command..."
+          aria-label="Chat input"
+          autocomplete="off"
+          spellcheck="false"
+        ></textarea>
+
+        <!-- Send button -->
+        <button id="send-btn" aria-label="Send message">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Hint bar -->
+      <div class="input-footer">
+        <span>GROQ · llama-3.3-70b-versatile</span>
+        <span>ENTER to send &nbsp;·&nbsp; SHIFT+ENTER for newline</span>
+      </div>
+    </div><!-- /#input-area -->
+
+  </div><!-- /#app -->
+
+  <!-- ── JavaScript (loaded last so DOM is ready) ── -->
+  <script src="app.js"></script>
+
+</body>
+</html>
